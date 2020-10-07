@@ -1,0 +1,59 @@
+<div
+  class="card flex"
+  [ngStyle]="{ 'background-color': cor }"
+  
+>
+  <p *ngIf="!enabledEdition">{{evaluation.name}}</p>
+  <p *ngIf="!enabledEdition" class="observation">
+    {{evaluation.description}}
+  </p>
+
+  <input
+    *ngIf="enabledEdition && creationEnabled"
+    [(ngModel)]="temporaryName"
+    [value]="evaluation.name"
+    placeholder="Digite um feedback"
+    type="text"
+  />
+
+  <input
+    *ngIf="enabledEdition && !creationEnabled"
+    [(ngModel)]="temporaryName"
+    [value]="evaluation.name"
+    placeholder="Digite um feedback"
+    type="text"
+    readonly
+  />
+
+  <input
+    *ngIf="enabledEdition"
+    [(ngModel)]="temporaryDescription"
+    [value]="evaluation.description"
+    placeholder="Digite uma observação"
+    type="text"
+  />
+  <span
+    class="material-icons"
+    (click)="displayMenu()"
+    (clickOutside)="closeMenu()"
+    >more_vert</span
+  >
+
+  <color-card (cardColor)="pegaCor($event)"></color-card>
+
+  <div *ngIf="showMenu && !creationEnabled" class="menu">
+    <button (click)="enableEdit($event)">Editar</button>
+    <button (click)="deleteCard()">Excluir</button>
+  </div>
+
+  <div *ngIf="showMenu && creationEnabled" class=" menu menu2">
+    <button (click)="saveEvaluation()">Adicionar</button>
+    <button (click)="cancelSaving()">Cancelar</button>
+  </div>
+
+  <div *ngIf="showMenu && !creationEnabled && enabledEdition" class=" menu menu2">
+    <button (click)="saveChanges()">Salvar</button>
+    <button (click)="cancelSaving()">Cancelar</button>
+  </div>
+
+</div>

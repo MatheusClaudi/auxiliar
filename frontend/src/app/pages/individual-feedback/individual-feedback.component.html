@@ -1,0 +1,66 @@
+<section class="individual">
+  <div class="header-individual">
+    <div class="individual-info">
+      <h2>Feedback individual</h2>
+      <h4>Desenvolvedor: {{ devName }}</h4>
+    </div>
+    <button (click)="redirectToFeedbackProject()" class="btn-back">
+      Voltar
+    </button>
+  </div>
+  <div class="meetings">
+    <div *ngFor="let meeting of meetings; let i = index" class="date-meeting">
+      <p>{{ i + 1 }}º Encontro</p>
+      <p>{{ meeting.ocurrencyDate }}</p>
+      
+
+      <div *ngFor="let eva of evaluationMap.get(meeting.ocurrencyDate)">
+        <feedback-card [evaluation]="eva" [newEvaluationEditConfirmed]="newEvaluationEditConfirmed.asObservable()" (delete)="deleteEvaluation($event, meeting.ocurrencyDate,eva)" (classificationChanges)="onClassificationChanges($event, eva)" (descriptionChanges)="onDescriptionChanges($event, eva)"></feedback-card>
+        <div class="errors-list" *ngIf="codeErrorsEva.has(eva.id)">
+         
+          <div *ngIf="codeErrorsEva.get(eva.id).has('descriptionOver200')">
+            <small class="text-danger">*Descrição muito grande</small>
+            <br/>
+          </div>
+         
+          <div *ngIf="codeErrorsEva.get(eva.id).has('descriptionOnlyEmptySpaces')">
+            <small class="text-danger">*Descrição vazia</small>
+            <br/>
+          </div>
+        </div>
+      </div>
+
+      <button (click)="showAddCard(i)">
+        <span>+</span>
+      </button>
+
+      <div *ngIf="displayAddCard && indexAddCard == i">
+        <feedback-card [creationEnabled]="true" (hideAddCard)="hideAddCard()" (saveNewEvaluation)="saveNewEvaluation(meeting.ocurrencyDate, $event)"></feedback-card>
+      </div>
+
+      <div class="errors" *ngIf="indexAddCard == i">
+        <div *ngIf="codeErrors.has('nameOver200')">
+          <small class="text-danger">*Nome muito grande</small>
+          <br/>
+        </div>
+        <div *ngIf="codeErrors.has('descriptionOver200')">
+          <small class="text-danger">*Descrição muito grande</small>
+          <br/>
+        </div>
+        <div *ngIf="codeErrors.has('nameOnlyEmptySpaces')">
+          <small class="text-danger">*Nome vazio</small>
+          <br/>
+        </div>
+        <div *ngIf="codeErrors.has('descriptionOnlyEmptySpaces')">
+          <small class="text-danger">*Descrição vazia</small>
+          <br/>
+        </div>
+        <div *ngIf="codeErrors.has('repeatClass')">
+          <small class="text-danger">*Feedback existente</small>
+          <br/>
+        </div>
+      </div>
+      
+    </div>
+  </div>
+</section>

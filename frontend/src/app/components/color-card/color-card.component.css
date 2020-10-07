@@ -1,0 +1,58 @@
+#component {
+  color: white;
+  cursor: pointer;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
+
+.menu {
+  z-index: 9999;
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  top: -60px;
+  left: 25px;
+  outline: none;
+}
+
+.menu button {
+  border: none;
+  width: 63px;
+  height: 30px;
+
+  font-size: 12px;
+
+  transition: 0.2s ease;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+}
+
+.menu button:nth-child(1):hover {
+  background-color: #5eca38;
+  color: #fff;
+}
+
+.menu button:nth-child(2):hover {
+  background-color: rgb(278, 200, 20);
+  color: #fff;
+}
+
+.menu button:nth-child(3):hover {
+  background-color: #eb4929;
+  color: #fff;
+}
+
+.submenu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

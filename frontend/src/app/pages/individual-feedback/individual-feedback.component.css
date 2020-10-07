@@ -1,0 +1,95 @@
+.individual {
+  padding: 35px 30px;
+}
+
+.header-individual {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  margin-bottom: 20px;
+  align-items: center;
+}
+
+.header-individual h4 {
+  opacity: 40%;
+  color: #384364;
+  font-size: 14px;
+}
+
+.header-individual h2 {
+  opacity: 100%;
+  color: #384364;
+}
+
+.btn-back {
+  width: 160px;
+  height: 46px;
+  text-align: center;
+  font: Bold 11px/11px Montserrat;
+  letter-spacing: 0.28px;
+  color: #ffffff;
+  text-transform: uppercase;
+  opacity: 1;
+  background: #0bb4d4 0% 0% no-repeat padding-box;
+  border-radius: 100px;
+  opacity: 1;
+  border: transparent;
+  transition: all 0.3s;
+}
+.btn-back:hover {
+  transform: scale(1.1);
+}
+
+.meetings {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+
+  width: 100%;
+}
+
+.date-meeting {
+  min-width: 353px;
+  padding: 10px;
+}
+
+.date-meeting p {
+  font-size: 0.73rem;
+  letter-spacing: 1px;
+  color: #384364;
+  text-transform: uppercase;
+  opacity: 0.9;
+  margin: 10px;
+}
+
+.date-meeting button {
+  width: 100%;
+  height: 34px;
+  margin-bottom: 12px;
+  background: #f9f9f9 0% 0% no-repeat padding-box;
+  border: 1px solid #e1e1e1;
+  border-radius: 4px;
+  outline: none;
+}
+
+.date-meeting button:active {
+  background: #f5f4fc 0% 0% no-repeat padding-box;
+}
+
+.date-meeting button span {
+  border-radius: 100%;
+}
+
+.errors-list{
+  margin-bottom: 5px;
+}
+
+@media (max-width: 750px) {
+  .meetings {
+    display: flex;
+    flex-direction: column;
+  }
+  .date-meeting {
+    width: 100%;
+  }
+}

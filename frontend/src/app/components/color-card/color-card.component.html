@@ -1,0 +1,14 @@
+<span
+  (click)="displayMenu()"
+  (clickOutside)="closeMenu()"
+  id="component"
+  class="material-icons"
+>
+  radio_button_checked
+</span>
+
+<div *ngIf="showMenu" class="menu">
+  <button (click)="mudaCor(1)">Manter</button>
+  <button (click)="mudaCor(2)">Atentar</button>
+  <button (click)="mudaCor(3)">Corrigir</button>
+</div>
