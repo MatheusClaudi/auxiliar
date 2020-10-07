@@ -102,12 +102,6 @@ export class CreateUsComponent implements OnInit{
     aux.release = this.release;
     aux.userStorys = new Array<UserStory>();
 
-    console.log("mark")
-    console.log(aux)
-    console.log(this.cards)
-    console.log(this.usrStories)
-    
-
     this._ss.saveSprintToUser(this.tokenService.getEmail(), aux).subscribe(
       data1 => {
 

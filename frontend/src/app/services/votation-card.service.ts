@@ -24,8 +24,6 @@ export class VotationCardService {
     }
     console.log(cardsSend);
     const url = this.apiUrl + "/cards/" + sprintId;
-    console.log("format cards")
-    console.log(cardsSend)
     return this.http.post(url, cardsSend);
   }
 }

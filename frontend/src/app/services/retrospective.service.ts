@@ -40,6 +40,15 @@ export class RetrospectiveService {
     return this.http.put<Card>(url, newCard, this.httpOptions);
   }
 
+  editCardText(
+    retrospectiveID: number,
+    listID,
+    newCard: Card
+  ): Observable<Card> {
+    const url = `${this.RETROSPECTIVE_API}/${retrospectiveID}/list/${listID}/card/text/${newCard.id}`;
+    return this.http.put<Card>(url, newCard, this.httpOptions);
+  }
+
   removeCard(retrospectiveID: number, listID, cardID: number) {
     const url = `${this.RETROSPECTIVE_API}/${retrospectiveID}/list/${listID}/card/${cardID}`;
     return this.http.delete(url, this.httpOptions);
@@ -50,4 +59,3 @@ export class RetrospectiveService {
     return this.http.get<Board>(url, this.httpOptions);
   }
 }
-

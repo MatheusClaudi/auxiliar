@@ -90,9 +90,4 @@ export class VotationRoomService {
     const url = this.apiUrl + "/statusVotation/" + roomId + "/" + status;
     return this.http.put(url, null);
   }
-
-  public resetPointsOfUserStory(storyId): Observable<any> {
-    const url = this.apiUrl + "/userStory/resetPoints/"+ storyId;
-    return this.http.put(url, null);
-  }
 }

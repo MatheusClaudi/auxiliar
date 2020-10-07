@@ -20,6 +20,7 @@ export class RetrospectiveComponent implements OnInit {
   public isLogged: boolean = false;
   title = 'Compartilhe com os devs';
   elementType = 'url';
+  public url: String;
 
   constructor(
     private route: ActivatedRoute,
@@ -38,11 +39,17 @@ export class RetrospectiveComponent implements OnInit {
     this.retrospectiveService.getBoard(this.boardID).subscribe((resp) => {
       this.board = resp;
     });
+
+    this.url = window.location.href;
   }
 
   addNewCard(i): void {
     this.retrospectiveService
-      .addNewCard(this.boardID, this.board.lists[i].id, 'Novo card')
+      .addNewCard(
+        this.boardID,
+        this.board.lists[i].id,
+        'Dê dois cliques para editar'
+      )
       .subscribe((nc) => {
         this.board.lists[i].cards.push(nc);
       });
@@ -63,6 +70,13 @@ export class RetrospectiveComponent implements OnInit {
     const { newCard, listID } = newCardInfo;
     this.retrospectiveService
       .editCard(this.boardID, listID, newCard)
+      .subscribe();
+  }
+
+  updateCardText(newCardInfo): void {
+    const { newCard, listID } = newCardInfo;
+    this.retrospectiveService
+      .editCardText(this.boardID, listID, newCard)
       .subscribe();
   }
 }

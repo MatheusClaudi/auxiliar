@@ -6,14 +6,13 @@
         <h2>{{ board.name }}</h2>
 
         <h4>Sprint</h4>
-        <h2 *ngIf="board.sprint">{{ board.sprint.name }}</h2>
-        <h2 *ngIf="!board.sprint">Indefinida</h2>
+        <h2 *ngIf="board.sprint">{{ board.sprint }}</h2>
       </div>
       <div class="qr-code">
         <ngx-qrcode
           [title]="title"
           [elementType]="elementType"
-          value="http://localhost:4200/retrospective/{{ board.id }}"
+          [value]="url"
           cssClass="aclass"
           errorCorrectionLevel="L"
         >
@@ -24,7 +23,7 @@
   <div class="invite">
     <p>Convidar Desenvolvedor ( a )</p>
     <div class="link">
-      <p>http://localhost:4200/retrospective/{{ board.id }}</p>
+      <p>{{ url }}</p>
     </div>
   </div>
 
@@ -32,7 +31,7 @@
     <div *ngFor="let list of board.lists; let i = index" class="card-list">
       <p>{{ list.name }}</p>
       <button (click)="addNewCard(i)">
-        <span id='add-note'>+</span>
+        <span>+</span>
       </button>
       <card
         *ngFor="let card of list.cards"
@@ -41,7 +40,7 @@
         [cardColor]="colors[i]"
         (update)="updateCard($event)"
         (delete)="deleteCard($event, i)"
-        id='note'
+        (updateText)="updateCardText($event)"
       ></card>
     </div>
   </div>

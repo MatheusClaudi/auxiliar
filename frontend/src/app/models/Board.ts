@@ -1,10 +1,9 @@
 import { ListBoard } from './ListBoard';
-import { Sprint } from './Sprint';
 
 export class Board {
   id: number;
   name: string;
+  sprint: string;
   date: string;
   lists: Array<ListBoard>;
-  sprint: Sprint;
 }

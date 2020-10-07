@@ -8,13 +8,11 @@ describe('workspace-project App', () => {
     page = new AppPage();
   });
 
-  /*
   it('should display welcome message', () => {
     page.navigateTo();
-    expect(page.getTitleText()).toEqual('Login');
+    expect(page.getTitleText()).toEqual('frontend app is running!');
   });
-*/
-  /*
+
   afterEach(async () => {
     // Assert that there are no errors emitted from the browser
     const logs = await browser.manage().logs().get(logging.Type.BROWSER);
@@ -22,5 +20,4 @@ describe('workspace-project App', () => {
       level: logging.Level.SEVERE,
     } as logging.Entry));
   });
-  */
 });

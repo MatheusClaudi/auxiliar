@@ -19,11 +19,7 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
   public sprintId;
   public currentUs;
   public currentUsTemp;
-
   public userStory = new Array();
-  public userStoryOpenToVotation = new Array();
-  public userStoryClosedToVotation = new Array();
-
   public inVotation;
   public hiddenController = false;
   roomId;
@@ -31,7 +27,6 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
   public votationOpen;
   public pointsForUs
   public votersThatVoted 
-  public listOfConfirmedVotes: Array<number>;
 
   a = "";
 
@@ -58,8 +53,7 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
         
         this.currentUs = data.objectOfCurrentVotation;
         this.inVotation = data.votationOpen;
-//        this.userStory = data.sprintInVotation.userStory;
-        this.updateUserStoryLists(data.sprintInVotation.userStory)
+        this.userStory = data.sprintInVotation.userStory;
         this.votationOpen = !!data.objectOfCurrentVotation;
       },
       err => {
@@ -80,20 +74,6 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
 
   ngOnInit(): void {
   
-  }
-
-  updateUserStoryLists(userStorys) {
-    this.userStoryClosedToVotation  = []
-    this.userStoryOpenToVotation = []
-    userStorys.forEach(us => {
-
-      if(us.points) {
-        this.userStoryClosedToVotation.push(us)
-      }
-      else {
-        this.userStoryOpenToVotation.push(us)
-      }
-    });
   }
 
   ngOnDestroy(): void{
@@ -120,8 +100,7 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
               this.roomId = data.id;
               this.currentUs = data.objectOfCurrentVotation;
               this.inVotation = data.votationOpen;
-//            this.userStory = data.sprintInVotation.userStory;
-              this.updateUserStoryLists(data.sprintInVotation.userStory)
+              this.userStory = data.sprintInVotation.userStory;
               this.votationOpen = !!data.objectOfCurrentVotation;
 
             }
@@ -153,11 +132,8 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
             this.roomId = data.id;
             this.currentUs = data.objectOfCurrentVotation;
             this.inVotation = data.votationOpen;
-            //        this.userStory = data.sprintInVotation.userStory;
-            this.updateUserStoryLists(data.sprintInVotation.userStory)
+            this.userStory = data.sprintInVotation.userStory;
             this.votationOpen = !!data.objectOfCurrentVotation;
-            //console.log(data)
-            this.currentUsTemp = null;
           }
         )
       }
@@ -184,24 +160,12 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
         this._vrs.listVoterInRoomThatVoted(this.roomId).subscribe(
           data => {
             this.votersThatVoted = data;
-            this.generateListOfVotes(this.votersThatVoted);
-            //console.log(data);
+            console.log(data);
           }
         )
      //   alert("votação parada");
       }
     )
-  }
-
-  generateListOfVotes(dataFromVotersThatVoted) {
-    let votes = []
-    dataFromVotersThatVoted.forEach(userData => {
-      votes.push(userData.vote)
-      console.log(userData)
-    });
-
-    // make sure that will not repeat votes
-    this.listOfConfirmedVotes = Array.from(new Set(votes));
   }
 
   restartVotation(){
@@ -233,25 +197,5 @@ export class PokerPlanningComponent implements OnInit, OnDestroy, OnChanges {
 
   changePoints(points){
     this.pointsForUs = points;
-  }
-
-  resetPointsOfUserStory(us) {
-    this._vrs.resetPointsOfUserStory(us.id).subscribe(
-      (response) => {
-        this._vrs.getRoomBySprintId(this.sprintId).subscribe(
-          data => {
-            
-            this.roomId = data.id;
-            this.currentUs = data.objectOfCurrentVotation;
-            this.inVotation = data.votationOpen;
-            //        this.userStory = data.sprintInVotation.userStory;
-            this.updateUserStoryLists(data.sprintInVotation.userStory)
-            this.votationOpen = !!data.objectOfCurrentVotation;
-            //console.log(data)
-            this.currentUsTemp = null;
-          }
-        )
-      }
-    )
   }
 }

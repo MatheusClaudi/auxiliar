@@ -18,7 +18,7 @@
       </li>
 
       <li *ngIf="isAdmin">
-        <a id="users-route" routerLink="/users" routerLinkActive="active"
+        <a routerLink="/users" routerLinkActive="active"
           ><span class="material-icons-outlined">account_circle</span
           >Usuários</a
         >
@@ -38,12 +38,12 @@
         >
       </li>
       <li *ngIf="isClient">
-        <a id="labels-route" routerLink="/labels" routerLinkActive="active"
+        <a routerLink="/labels" routerLinkActive="active"
           ><span class="material-icons-outlined"> bookmarks </span>Labels</a
         >
       </li>
       <li *ngIf="isClient">
-        <a id="retrospective-route" routerLink="/dashboard" routerLinkActive="active"
+        <a routerLink="/dashboard" routerLinkActive="active"
           ><span class="material-icons-outlined">settings</span>Sprint
           Retrospective</a
         >

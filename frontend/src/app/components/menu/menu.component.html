@@ -67,19 +67,10 @@
           </button>
         </div>
 
-        <button 
-          ngbDropdownItem
-          class="btn-menu"
-          *ngIf="hasAction && currentLabel == 'Entrar'"
-          (click)="handleAction()"
-        >
-          {{ currentLabel }}
-        </button>
-
         <button
           ngbDropdownItem
           class="btn-menu"
-          *ngIf="hasAction && currentLabel == 'Sair'"
+          *ngIf="hasAction"
           (click)="handleAction()"
         >
           {{ currentLabel }}
