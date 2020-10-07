@@ -39,7 +39,6 @@
 }
 
 .login-form-header-logo {
-
   display: flex;
   width: 180px;
   height: 105px;
@@ -50,7 +49,7 @@
   background-repeat: no-repeat;
 }
 
-.product-title { 
+.product-title {
   position: relative;
   text-align: center;
   color: white;
@@ -106,9 +105,14 @@ fa-icon {
   font-size: 13px;
   font-weight: bold;
   max-width: 260px;
+  outline: none;
 }
 
-.btn:hover {
+.btn:disabled {
+  transform: none;
+}
+
+.btn:hover:enabled {
   transform: scale(1.04);
 }
 
@@ -126,12 +130,11 @@ a:hover {
   .login-form-header-bg {
     max-width: 550px;
   }
-  
+
   .page {
     display: flex;
     max-width: 90%;
     margin: auto;
-    
   }
 }
 

@@ -1,4 +1,4 @@
-.container{
+.container {
   display: block;
   padding-top: 35px;
 
@@ -10,6 +10,8 @@
 .badge {
   width: 56px;
   margin-bottom: 30px;
+  cursor: pointer;
+  user-select: none;
 }
 
 .pass {
@@ -45,11 +47,11 @@ input {
   display: block;
   width: 20%;
   height: 40px;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background: #F5F4FC 0% 0% no-repeat padding-box;
+  background: #f5f4fc 0% 0% no-repeat padding-box;
   border-radius: 2px;
   opacity: 1;
   border: transparent;
@@ -87,13 +89,27 @@ input {
   text-align: center;
   font: Bold 11px/11px Montserrat;
   letter-spacing: 0.28px;
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   opacity: 1;
-  background: #0BB4D4 0% 0% no-repeat padding-box;
+  background: #0bb4d4 0% 0% no-repeat padding-box;
   border-radius: 100px;
   opacity: 1;
   border: transparent;
+  transition: all 0.3s;
+}
+
+.btn-add:disabled {
+  opacity: 65%;
+  transform: none;
+}
+
+.btn-add:hover:enabled {
+  transform: scale(1.04);
+}
+
+.btn-cancel:hover {
+  transform: scale(1.04);
 }
 
 .btn-cancel {
@@ -102,7 +118,7 @@ input {
   text-align: center;
   font: Bold 11px/11px Montserrat;
   letter-spacing: 0.28px;
-  color: #FFFFFF;
+  color: #ffffff;
   text-transform: uppercase;
   opacity: 1;
   background: #878787 0% 0% no-repeat padding-box;
@@ -125,16 +141,15 @@ input {
   opacity: 1;
 
   padding: 0.45rem 1.25rem;
-  background: #F9F9F9 0% 0% no-repeat padding-box;
-  border: 1px solid #E1E1E1;
+  background: #f9f9f9 0% 0% no-repeat padding-box;
+  border: 1px solid #e1e1e1;
   border-radius: 4px;
   opacity: 1;
 }
 
-.table-row{
+.table-row {
   width: 880px;
 }
-
 
 .spacer-btn {
   margin-right: 21px;
@@ -143,7 +158,7 @@ input {
 .btn-us-list {
   width: 30px;
   height: 30px;
-  background: #F5F6FA 0% 0% no-repeat padding-box;
+  background: #f5f6fa 0% 0% no-repeat padding-box;
   opacity: 1;
   border-radius: 30px;
   border: transparent;
@@ -153,12 +168,12 @@ input {
   display: block;
   width: 100%;
   height: 108px;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   margin-bottom: 0;
   font-size: 1rem;
   line-height: 1.5;
   color: #212529;
-  background: #F5F4FC 0% 0% no-repeat padding-box;
+  background: #f5f4fc 0% 0% no-repeat padding-box;
   border-radius: 2px;
   opacity: 1;
   border: transparent;
@@ -183,11 +198,11 @@ input {
   display: block;
   width: 100%;
   height: 40px;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background: #F5F4FC 0% 0% no-repeat padding-box;
+  background: #f5f4fc 0% 0% no-repeat padding-box;
   border-radius: 2px;
   opacity: 1;
   border: transparent;
@@ -197,26 +212,26 @@ input {
   display: block;
   width: 100%;
   height: 108px;
-  padding: .375rem .75rem;
+  padding: 0.375rem 0.75rem;
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  background: #F5F4FC 0% 0% no-repeat padding-box;
+  background: #f5f4fc 0% 0% no-repeat padding-box;
   border-radius: 2px;
   opacity: 1;
   border: transparent;
 }
 
-.buttons{
+.buttons {
   display: flex;
   flex-direction: row;
   justify-content: flex-start;
   padding-left: 10%;
+  margin-bottom: 1%;
 }
 
-
 @media (max-width: 1000px) {
-  .conteiner{
+  .conteiner {
     margin-left: 10px;
     margin-right: 10px;
   }
@@ -226,24 +241,24 @@ input {
   }
 
   .input {
-      width: 100%
+    width: 100%;
   }
 
   .text-area {
-    width: 100%
+    width: 100%;
   }
 
   .alert-box {
-    width: 100%
+    width: 100%;
   }
 
-  .table-row{
+  .table-row {
     width: 100%;
   }
 }
 
 @media (max-width: 500px) {
-  .conteiner{
+  .conteiner {
     margin-left: 7px;
     margin-right: 7px;
   }
@@ -253,23 +268,24 @@ input {
   }
 
   .input {
-      width: 90%
+    width: 90%;
   }
 
   .text-area {
-    width: 100%
-  }
-
-  .alert-box {
-    width: 100%
-  }
-
-  .table-row{
     width: 100%;
   }
 
-  .buttons{
+  .alert-box {
+    width: 100%;
+  }
+
+  .table-row {
+    width: 100%;
+  }
+
+  .buttons {
     padding-left: 0%;
     justify-content: center;
+    margin-bottom: 3%;
   }
 }

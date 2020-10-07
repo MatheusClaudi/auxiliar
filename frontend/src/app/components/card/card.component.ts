@@ -15,6 +15,7 @@ export class CardComponent implements OnInit {
   @Input('cardColor') color;
   @Output('delete') deleteCard = new EventEmitter();
   @Output('update') updateCard = new EventEmitter();
+  @Output('updateText') updateCardText = new EventEmitter();
 
   public enabledEdition: boolean;
   public showMenu: boolean;
@@ -23,9 +24,7 @@ export class CardComponent implements OnInit {
     this.showMenu = false;
   }
 
-  ngOnInit(): void {
-    console.log(this.card.tags);
-  }
+  ngOnInit(): void {}
 
   addTag(item: Tag) {
     this.card.tags.push(item);
@@ -54,7 +53,6 @@ export class CardComponent implements OnInit {
 
   enableEdit(event) {
     event.stopPropagation();
-    this.displayMenu();
     this.enabledEdition = true;
   }
 
@@ -72,7 +70,7 @@ export class CardComponent implements OnInit {
       newCard.text = currentValue;
       this.card.text = currentValue;
 
-      this.updateCard.emit({ newCard: newCard, listID: this.listID });
+      this.updateCardText.emit({ newCard: newCard, listID: this.listID });
     } else if (event.key == 'Escape') {
       this.closeEdition();
     }

@@ -15,12 +15,6 @@ exports.config = {
   capabilities: {
     browserName: 'chrome'
   },
-  suites: {
-    login:'./src/app/pages/login/*.e2e-spec.ts',
-    register:'./src/app/pages/users/*.e2e-spec.ts',
-    labels:'./src/app/pages/labels/*.e2e-spec.ts',
-    retrospective:'./src/app/pages/retrospective/*.e2e-spec.ts',
-  },
   directConnect: true,
   baseUrl: 'http://localhost:4200/',
   framework: 'jasmine',

@@ -31,6 +31,14 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  outline: none;
+  transition: all 0.3s;
+}
+
+.header-info button:hover {
+  -webkit-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.3);
+  -moz-box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.3);
+  box-shadow: 0px 0px 3px 3px rgba(0, 0, 0, 0.3);
 }
 
 .list-sprint {
@@ -120,5 +128,3 @@
     flex-direction: column-reverse;
   }
 }
-
-  

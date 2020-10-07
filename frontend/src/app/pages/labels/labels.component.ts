@@ -57,9 +57,6 @@ export class LabelsComponent implements OnInit {
       this.tagOnEditId = undefined;
       let currentValue = event.target.value;
       console.log(currentValue);
-      if (currentValue == "") {
-        return
-      }
       console.log(id);
 
       let newTag = new Tag();

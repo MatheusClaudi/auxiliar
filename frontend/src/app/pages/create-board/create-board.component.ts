@@ -18,67 +18,52 @@ import { Sprint } from 'src/app/models/Sprint';
 export class CreateBoardComponent implements OnInit {
   public modalForm: FormGroup;
   private apiUrl: string;
-  public sprintsFromUSer;
-  public sprintSelected;
   public showError = false;
 
   constructor(
     public dashBoardService: DashboardService,
-    private router: Router,  private _ss: SprintService
+    private router: Router,
+    private _ss: SprintService
   ) {
     const API = environment.API;
     this.apiUrl = API + '/api';
     this.modalForm = new FormGroup({
-      name: new FormControl('', [Validators.required, Validators.minLength(2), Validators.maxLength(200)]),
+      name: new FormControl('', [
+        Validators.required,
+        Validators.minLength(2),
+        Validators.maxLength(200),
+      ]),
+      sprint: new FormControl(''),
     });
-
-
-      this._ss.findAllSprintsFromUser("").subscribe(
-        data => {
-          this.sprintsFromUSer = [];
-  
-          for (let i = 0; i < data.length; i++){
-            let sprint: Sprint;
-            sprint = new Sprint();
-            sprint.id = data[i].id;
-            sprint.name = data[i].name;
-            sprint.date = data[i].date;
-            this.sprintsFromUSer.push(sprint);
-          }
-        }
-      )
   }
 
   hasError(field: string, error: string): boolean {
     const ctrl = this.modalForm.get(field);
-    return (ctrl.dirty && ctrl.hasError(error)) || (this.showError && ctrl.hasError(error));
+    return (
+      (ctrl.dirty && ctrl.hasError(error)) ||
+      (this.showError && ctrl.hasError(error))
+    );
   }
 
   ngOnInit() {}
 
-  selectSprint(sprint) {
-    this.sprintSelected = sprint;
-  }
-
   createBoard(): void {
-    if(this.modalForm.valid){
+    if (this.modalForm.valid) {
       let board = new Board();
       board.name = this.modalForm.get('name').value;
+      board.sprint = this.modalForm.get('sprint').value;
       board.lists = [
         new ListBoard('Ótimo'),
         new ListBoard('Aprimorar'),
         new ListBoard('Pontos de ação'),
       ];
 
-      if (this.sprintSelected){
-        board.sprint = this.sprintSelected;
-      }
       this.dashBoardService.save(board).subscribe((data) => {
+        console.log(data);
         this.dashBoardService.newBoardSubject.next(board);
         this.router.navigate(['/dashboard']);
       });
-    }
-    else{
+    } else {
       this.showError = true;
     }
   }

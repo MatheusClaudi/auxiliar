@@ -80,6 +80,14 @@ label {
   opacity: 1;
   border: transparent;
 }
+#btn-save-add:hover {
+  transform: scale(1.04);
+}
+
+span {
+  user-select: none;
+  outline: none;
+}
 
 #btn-save-close {
   width: 216px;
@@ -291,8 +299,7 @@ td {
   transform: rotate(180deg);
 }
 
-
-.pagination{
+.pagination {
   max-height: 30px;
   margin-top: 20px;
   display: flex;
@@ -306,16 +313,16 @@ td {
   float: left;
   padding: 8px 16px;
   text-decoration: none;
-  transition: background-color .3s;
+  transition: background-color 0.3s;
 }
 
-.pagination .n{
+.pagination .n {
   padding: 0.1875rem 0.625rem;
   background: #0bb4d4 !important;
   color: #fefefe;
 }
 
-.pagination .arrow{
+.pagination .arrow {
   padding: 0.1875rem 0.625rem;
   color: #cacaca;
 }
@@ -327,7 +334,9 @@ td {
 }
 
 /* Add a grey background color on mouse-over */
-.pagination a:hover:not(.active) {background-color: #ddd;}
+.pagination a:hover:not(.active) {
+  background-color: #ddd;
+}
 
 @media (max-width: 1000px) {
   .conteiner {

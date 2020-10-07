@@ -11,11 +11,10 @@
       <div class="card-board" (click)="redirectTo(board)">
         <div class="info-board">
           <h3>{{ board.name }}</h3>
-          <p>{{ board.date }}</p>
+          <p>Criado em: {{ board.date }}</p>
         </div>
         <div class="btns">
           <span
-            ngbTooltip="Deletar"
             (click)="deleteBoard($event, board.id)"
             id="delete"
             class="material-icons"
